@@ -118,7 +118,6 @@ if (contactForm) {
         const originalBtnText = submitBtn.innerHTML;
         const name = document.getElementById('name').value.trim();
         const email = document.getElementById('email').value.trim();
-        const subject = document.getElementById('subject').value.trim();
         const message = document.getElementById('message').value.trim();
         const formMessage = document.getElementById('formMessage');
 
@@ -148,7 +147,6 @@ if (contactForm) {
 📬 New Message from Portfolio
 👤 Name: ${name}
 📧 Email: ${email}
-🏷️ Subject: ${subject}
 📝 Message: 
 ${message}
         `;
