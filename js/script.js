@@ -122,7 +122,7 @@ if (contactForm) {
         const formMessage = document.getElementById('formMessage');
 
         // Validation
-        if (!name || !email || !subject || !message) {
+        if (!name || !email || !message) {
             showMessage('Please fill in all fields', 'error');
             return;
         }
