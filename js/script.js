@@ -52,22 +52,33 @@ navLinks.forEach(link => {
 });
 
 // ============================================
-// SET ACTIVE NAV LINK
+// SET ACTIVE NAV LINK (SCROLL POSITION)
 // ============================================
 
 function setActiveNavLink() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    
-    navLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
+    const sections = document.querySelectorAll('section[id]');
+    const scrollPosition = window.scrollY + 100;
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${sectionId}`) {
+                    link.classList.add('active');
+                }
+            });
         }
     });
 }
 
+// Set active nav link on scroll
+window.addEventListener('scroll', setActiveNavLink);
+
+// Set active nav link on load
 setActiveNavLink();
 
 // ============================================
