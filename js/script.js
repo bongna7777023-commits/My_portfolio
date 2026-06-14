@@ -257,25 +257,24 @@ document.querySelectorAll('.project-card, .skill-card, .timeline-item').forEach(
 // SKILL PROGRESS ANIMATION
 // ============================================
 
-const skillObserver = new IntersectionObserver((entries) => {
+const skillProgressObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            const progressBars = entry.target.querySelectorAll('.skill-progress');
-            progressBars.forEach(bar => {
-                const width = bar.style.width;
-                bar.style.width = '0';
+            const progressBars = entry.target.querySelectorAll('.skill-progress-bar');
+            progressBars.forEach((bar, index) => {
+                const percentage = bar.getAttribute('data-percentage');
                 setTimeout(() => {
-                    bar.style.width = width;
-                }, 100);
+                    bar.style.width = percentage + '%';
+                }, index * 150); // Stagger animation
             });
-            skillObserver.unobserve(entry.target);
+            skillProgressObserver.unobserve(entry.target);
         }
     });
 }, { threshold: 0.3 });
 
 const skillsSection = document.getElementById('skills');
 if (skillsSection) {
-    skillObserver.observe(skillsSection);
+    skillProgressObserver.observe(skillsSection);
 }
 
 // ============================================
