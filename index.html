@@ -1,906 +1,892 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vanna Len - Portfolio</title>
-    <link rel="stylesheet" href="./style/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Vanna Len | Web Developer &amp; UI/UX Designer</title>
+    <meta name="description" content="Portfolio of Vanna Len, a web developer and UI/UX designer based in Phnom Penh, Cambodia. Explore projects, skills, workshops, and get in touch.">
+    <meta name="author" content="Vanna Len">
+    <meta name="theme-color" content="#05060f">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Vanna Len | Web Developer &amp; UI/UX Designer">
+    <meta property="og:description" content="Portfolio of Vanna Len, a web developer and UI/UX designer based in Phnom Penh, Cambodia. Explore projects, skills, workshops, and get in touch.">
+    <meta property="og:image" content="image/profile-hero.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vanna Len | Web Developer &amp; UI/UX Designer">
+    <meta name="twitter:description" content="Portfolio of Vanna Len, a web developer and UI/UX designer based in Phnom Penh, Cambodia.">
+    <meta name="twitter:image" content="image/profile-hero.jpg">
+
+    <link rel="icon" href="image/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="style/styles.css">
+    <link rel="stylesheet" href="style/animations.css">
+    <link rel="stylesheet" href="style/responsive.css">
+
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem('portfolio-theme');
+                var theme = saved === 'light' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', theme);
+                document.documentElement.style.colorScheme = theme;
+            } catch (error) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <a href="index.html">VANNA LEN</a>
-            </div>
-            <div class="nav-menu" id="navMenu">
-                <a href="#home" class="nav-link active">HOME</a>
-                <a href="#about" class="nav-link">ABOUT</a>
-                <a href="#projects" class="nav-link">PROJECT</a>
-                <a href="#activity" class="nav-link">ACTIVITY</a>
-                <a href="#contact" class="nav-link">CONTACT</a>
-            </div>
-            <div class="nav-actions">
-                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
-                    <i class="fas fa-sun"></i>
-                    <i class="fas fa-moon"></i>
-                </button>
-                <a href="./download-CV/Len vanna-Python Developer-CV.pdf" class="btn btn-outline" download>
-                    <i class="fas fa-download"></i>
-                    <span>CV</span>
-                </a>
-            </div>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+    <a class="skip-link" href="#main">Skip to content</a>
 
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar" aria-label="Primary navigation">
+        <div class="container nav-container">
+            <a class="brand" href="#home">
+                <span class="brand-mark" aria-hidden="true">VL</span>
+                <span class="brand-text">Vanna Len</span>
+            </a>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link is-active" aria-current="page">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#activity" class="nav-link">Activity</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme">
+                    <i class="fa-solid fa-sun theme-icon theme-icon--sun" aria-hidden="true"></i>
+                    <i class="fa-solid fa-moon theme-icon theme-icon--moon" aria-hidden="true"></i>
+                </button>
+                <a class="btn btn-primary btn-sm btn-cv" href="download-CV/Len vanna-Python Developer-CV.pdf" download aria-label="Download CV">
+                    <i class="fa-solid fa-download" aria-hidden="true"></i>
+                    <span>Download CV</span>
+                </a>
+                <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Open navigation menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </nav>
+    <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-badge">Welcome to my portfolio</div>
-            <h1 class="hero-title">HELLO, I'M <span class="highlight">VANNA LEN</span></h1>
-            <p class="hero-subtitle">Creative web developer & Designer</p>
-            <p class="hero-description">Passionate about creating modern websites and intuitive user interfaces using
-                the latest web technologies. I enjoy turning ideas into functional and visually appealing digital
-                products.</p>
-            <div class="hero-buttons">
-                <a href="#projects" class="btn btn-primary">
-                    <span>View My Work</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+    <main id="main">
+        <!-- Hero -->
+        <section id="home" class="hero section" aria-labelledby="hero-title">
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <span class="hero-badge" data-reveal>
+                        <span class="badge-dot" aria-hidden="true"></span>
+                        Welcome to my portfolio
+                    </span>
 
-            </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-number">6+</span>
-                    <span class="stat-label">Projects</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">2+</span>
-                    <span class="stat-label">Years Learning</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">90%</span>
-                    <span class="stat-label">Dedicated</span>
-                </div>
-            </div>
-        </div>
-        <div class="hero-image">
-            <div class="avatar-placeholder">
-                <img src="image/image copy.png" alt="Vanna Len Profile">
-            </div>
-        </div>
-    </section>
+                    <h1 class="hero-title" id="hero-title" data-reveal>
+                        Hello, I&rsquo;m <span class="hero-name">Vanna Len</span>
+                    </h1>
 
-    <!-- Featured Projects Preview -->
-    <section class="featured-projects">
-        <div class="container">
-            <h2 class="section-title">FEATURED PROJECTS</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-laptop-code"></i>
+                    <p class="hero-subtitle" data-reveal>Creative Web Developer <span class="amp">&amp;</span> Designer</p>
+
+                    <p class="hero-description" data-reveal>
+                        Passionate about creating modern websites and intuitive user interfaces using the latest web
+                        technologies. I enjoy turning ideas into functional and visually appealing digital products.
+                    </p>
+
+                    <div class="hero-actions" data-reveal>
+                        <a href="#projects" class="btn btn-primary">
+                            <span>View My Work</span>
+                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <span>Contact Me</span>
+                            <i class="fa-regular fa-paper-plane" aria-hidden="true"></i>
+                        </a>
                     </div>
-                    <h3>Web Development</h3>
-                    <p>Building responsive and interactive websites with modern technologies</p>
+
+                    <div class="hero-stats" data-reveal>
+                        <div class="stat">
+                            <span class="stat-number" data-count="6" data-suffix="+">6+</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-count="2" data-suffix="+">2+</span>
+                            <span class="stat-label">Years Learning</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-count="90" data-suffix="%">90%</span>
+                            <span class="stat-label">Dedicated</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-palette"></i>
+
+                <div class="hero-visual" data-reveal>
+                    <div class="profile-frame">
+                        <img src="image/profile-hero.jpg" alt="Portrait of Vanna Len" width="871" height="855" fetchpriority="high" decoding="async">
                     </div>
-                    <h3>UI/UX Design</h3>
-                    <p>Creating beautiful user interfaces with excellent user experience</p>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Mobile Design</h3>
-                    <p>Designing responsive layouts that work perfectly on all devices</p>
+                    <span class="float-chip float-chip--one" aria-hidden="true">
+                        <i class="fa-solid fa-code"></i> Frontend
+                    </span>
+                    <span class="float-chip float-chip--two" aria-hidden="true">
+                        <i class="fa-solid fa-palette"></i> UI/UX
+                    </span>
+                    <span class="float-chip float-chip--three" aria-hidden="true">
+                        <i class="fa-brands fa-laravel"></i> Laravel
+                    </span>
                 </div>
             </div>
-            <div class="view-all">
-                <a href="#projects" class="btn btn-primary">View All Projects</a>
+        </section>
+
+        <!-- Featured projects -->
+        <section class="section featured" aria-labelledby="featured-title">
+            <div class="container">
+                <header class="section-head" data-reveal>
+                    <span class="eyebrow">Selected work</span>
+                    <h2 class="section-title" id="featured-title">Featured <span class="gradient-text">Projects</span></h2>
+                    <p class="section-subtitle">A closer look at a few projects I have built and designed.</p>
+                </header>
+
+                <div class="featured-grid">
+                    <article class="featured-card featured-card--large" data-reveal>
+                        <a class="featured-media" href="https://vc-1-trip-booking.vercel.app" target="_blank" rel="noopener noreferrer">
+                            <img src="image/vc1-trip-booking.jpg" alt="Screenshot of the Komrong Trip Booking App" width="1400" height="643" loading="lazy" decoding="async">
+                            <span class="project-badge">Web App</span>
+                        </a>
+                        <div class="featured-body">
+                            <h3><a href="https://vc-1-trip-booking.vercel.app" target="_blank" rel="noopener noreferrer">Komrong Trip Booking App</a></h3>
+                            <p>Komrong is a web-based trip planning &amp; booking application designed especially for students and groups of friends who want to organize trips easily.</p>
+                            <div class="tags">
+                                <span class="tag">Laravel</span>
+                                <span class="tag">React.js</span>
+                                <span class="tag">MySQL</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="featured-card" data-reveal>
+                        <a class="featured-media" href="https://weather-web.magic-web.site" target="_blank" rel="noopener noreferrer">
+                            <img src="image/weather-app.jpg" alt="Screenshot of the Weather App" width="1400" height="667" loading="lazy" decoding="async">
+                            <span class="project-badge">Web App</span>
+                        </a>
+                        <div class="featured-body">
+                            <h3><a href="https://weather-web.magic-web.site" target="_blank" rel="noopener noreferrer">Weather App</a></h3>
+                            <div class="tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="featured-card" data-reveal>
+                        <a class="featured-media" href="http://vannacar.site/" target="_blank" rel="noopener noreferrer">
+                            <img src="image/car-rental.jpg" alt="Screenshot of the Car Rental System" width="1400" height="672" loading="lazy" decoding="async">
+                            <span class="project-badge">Web App</span>
+                        </a>
+                        <div class="featured-body">
+                            <h3><a href="http://vannacar.site/" target="_blank" rel="noopener noreferrer">Car Rental System</a></h3>
+                            <div class="tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">HTML</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="section-cta" data-reveal>
+                    <a href="#projects" class="btn btn-secondary">
+                        <span>View All Projects</span>
+                        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="container">
-            <h2 class="section-title">ABOUT ME</h2>
-            <div class="about-grid">
-                <div class="about-image">
-                    <div class="avatar-large">
-                        <img src="image/image.png" alt="Vanna Len Profile Picture">
-                    </div>
-                </div>
-                <div class="about-content">
-                    <h2>Who Am I?</h2>
-                    <p>I'm a Web Developer and UI/UX Designer who enjoys creating simple, modern, and easy-to-use
-                        websites. I like turning ideas into websites and applications that look good and work well.</p>
-                    <p>My interest in technology started when I became curious about how websites are built. Since then,
-                        I have learned web development, responsive design, and user interface design. I always try to
-                        learn new tools and improve my skills.</p>
-                    <p>When I'm not coding or designing, I enjoy learning new technologies, working on personal
-                        projects, and growing my knowledge as a developer and designer.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        <!-- About -->
+        <section id="about" class="section about" aria-labelledby="about-title">
+            <div class="container">
+                <header class="section-head" data-reveal>
+                    <span class="eyebrow">About me</span>
+                    <h2 class="section-title" id="about-title">Who <span class="gradient-text">I am</span></h2>
+                </header>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills-section">
-        <div class="container">
-            <h2 class="section-title">MY TECHNICAL SKILLS</h2>
+                <div class="about-grid">
+                    <div class="about-media" data-reveal>
+                        <div class="about-frame">
+                            <img src="image/profile-about.jpg" alt="Vanna Len working as a web developer and designer" width="883" height="1000" loading="lazy" decoding="async">
+                        </div>
+                        <div class="about-badge">
+                            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                            <div>
+                                <strong>Based in Phnom Penh</strong>
+                                <span>Cambodia</span>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="skills-cards-grid">
-                <!-- Frontend Card -->
-                <div class="skill-card">
-                    <div class="skill-card-header">
-                        <i class="fas fa-laptop-code"></i>
-                        <h3>Frontend</h3>
-                    </div>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">HTML/CSS</span>
-                                <span class="skill-percentage">80%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="80"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">JavaScript</span>
-                                <span class="skill-percentage">60%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="60"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">React.js</span>
-                                <span class="skill-percentage">65%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="65"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">Vue.js</span>
-                                <span class="skill-percentage">70%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="70"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">SASS</span>
-                                <span class="skill-percentage">80%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="80"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <div class="about-copy" data-reveal>
+                        <p>I&rsquo;m a Web Developer and UI/UX Designer who enjoys creating simple, modern, and easy-to-use websites. I like turning ideas into websites and applications that look good and work well.</p>
+                        <p>My interest in technology started when I became curious about how websites are built. Since then, I have learned web development, responsive design, and user interface design. I always try to learn new tools and improve my skills.</p>
+                        <p>When I&rsquo;m not coding or designing, I enjoy learning new technologies, working on personal projects, and growing my knowledge as a developer and designer.</p>
 
-                <!-- Backend Card -->
-                <div class="skill-card">
-                    <div class="skill-card-header">
-                        <i class="fas fa-server"></i>
-                        <h3>Backend</h3>
-                    </div>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">PHP</span>
-                                <span class="skill-percentage">70%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="70"></div>
-                            </div>
+                        <div class="about-tags" role="group" aria-label="Areas of focus">
+                            <span class="tag"><i class="fa-solid fa-code" aria-hidden="true"></i> Web Development</span>
+                            <span class="tag"><i class="fa-solid fa-palette" aria-hidden="true"></i> UI/UX Design</span>
+                            <span class="tag"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i> Responsive Design</span>
+                            <span class="tag"><i class="fa-brands fa-figma" aria-hidden="true"></i> Figma</span>
                         </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">Node.js</span>
-                                <span class="skill-percentage">76%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="76"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">Python</span>
-                                <span class="skill-percentage">60%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="60"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">OOP TypeScript</span>
-                                <span class="skill-percentage">65%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="65"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">Laravel</span>
-                                <span class="skill-percentage">70%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="70"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Database Card -->
-                <div class="skill-card">
-                    <div class="skill-card-header">
-                        <i class="fas fa-database"></i>
-                        <h3>Database</h3>
-                    </div>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">MySQL</span>
-                                <span class="skill-percentage">80%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="80"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">MongoDB</span>
-                                <span class="skill-percentage">75%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="75"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">PosgreSQL</span>
-                                <span class="skill-percentage">60%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="60"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Deployments Card -->
-                <div class="skill-card">
-                    <div class="skill-card-header">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                        <h3>Deployments</h3>
-                    </div>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">AWS</span>
-                                <span class="skill-percentage">70%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="70"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">Netlify</span>
-                                <span class="skill-percentage">85%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">Vercel</span>
-                                <span class="skill-percentage">80%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="80"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">Docker</span>
-                                <span class="skill-percentage">50%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="50"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tools Card -->
-                <div class="skill-card">
-                    <div class="skill-card-header">
-                        <i class="fas fa-tools"></i>
-                        <h3>Tools & Design</h3>
-                    </div>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">GitHub</span>
-                                <span class="skill-percentage">90%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">Jira</span>
-                                <span class="skill-percentage">75%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="75"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">Canva</span>
-                                <span class="skill-percentage">80%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="80"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">Draw.io</span>
-                                <span class="skill-percentage">70%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="70"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">Figma</span>
-                                <span class="skill-percentage">85%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">Postman</span>
-                                <span class="skill-percentage">80%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="80"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- AI Tools Card -->
-                <div class="skill-card">
-                    <div class="skill-card-header">
-                        <i class="fas fa-robot"></i>
-                        <h3>AI Tools</h3>
-                    </div>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">ChatGPT</span>
-                                <span class="skill-percentage">85%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">GitHub Copilot</span>
-                                <span class="skill-percentage">75%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="75"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">Claude</span>
-                                <span class="skill-percentage">70%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="70"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">Gemini</span>
-                                <span class="skill-percentage">70%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="70"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">codex</span>
-                                <span class="skill-percentage">70%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="70"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">opencode-ai</span>
-                                <span class="skill-percentage">70%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" data-percentage="70"></div>
-                            </div>
-                        </div>
+                        <a href="#contact" class="btn btn-primary">
+                            <span>Let&rsquo;s work together</span>
+                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                        </a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Experience Section -->
-    <section class="experience-section">
-        <div class="container">
-            <h2 class="section-title">EXPERIENCE</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h3>WEB DEVELOPER</h3>
-                        <p class="timeline-date">2025 - Present</p>
-                        <p>I'm learning web development at PNC for 2 years. I can write code for both front-end and a
-                            little backend as well. I can design on Figma. It's not perfect, but I'm improving.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h3>WORK AT PHNOM PENH FOR A MONTH</h3>
-                        <p class="timeline-date">2024</p>
-                        <p>Moving to Phnom Penh was a new and exciting experience for me. It was my first time living in
-                            the city, and I traveled there independently. Fortunately, my older brother, who works in
-                            Phnom Penh, welcomed me upon my arrival.
-                            With the support and guidance of senior students who had previously stayed in the student
-                            dormitory, I secured a position at a Total gas station. I worked there for one month before
-                            resigning to focus on my studies as the school term was about to begin.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h3>HIGH SCHOOL</h3>
-                        <p class="timeline-date">2021 - 2024</p>
-                        <p>I studied in high school. I didn't study very well, but I managed to pass my exams. I stayed
-                            in a student dormitory from Monday to Saturday, and on Saturday evening I came back home to
-                            help my family with work. My house is far from the school—about 60 kilometers away. Usually,
-                            I ride a bicycle, and sometimes I take a motorbike for go to school.</p>
-                    </div>
+        <!-- Skills -->
+        <section id="skills" class="section skills" aria-labelledby="skills-title">
+            <div class="container">
+                <header class="section-head" data-reveal>
+                    <span class="eyebrow">Capabilities</span>
+                    <h2 class="section-title" id="skills-title">Technical <span class="gradient-text">Skills</span></h2>
+                    <p class="section-subtitle">The tools and technologies I use to build and design digital products.</p>
+                </header>
+
+                <div class="skills-grid">
+                    <article class="skill-card" data-reveal>
+                        <div class="skill-card-head">
+                            <span class="skill-icon" aria-hidden="true"><i class="fa-solid fa-laptop-code"></i></span>
+                            <h3>Frontend</h3>
+                            <span class="skill-count">5 skills</span>
+                        </div>
+                        <div class="skill-list">
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">HTML/CSS</span><span class="skill-value">80%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="HTML and CSS proficiency" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="80"></span></div>
+                            </div>
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">JavaScript</span><span class="skill-value">60%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="JavaScript proficiency" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="60"></span></div>
+                            </div>
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">React.js</span><span class="skill-value">65%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="React.js proficiency" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="65"></span></div>
+                            </div>
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">Vue.js</span><span class="skill-value">70%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="Vue.js proficiency" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="70"></span></div>
+                            </div>
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">SASS</span><span class="skill-value">80%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="SASS proficiency" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="80"></span></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="skill-card" data-reveal>
+                        <div class="skill-card-head">
+                            <span class="skill-icon" aria-hidden="true"><i class="fa-solid fa-server"></i></span>
+                            <h3>Backend</h3>
+                            <span class="skill-count">5 skills</span>
+                        </div>
+                        <div class="skill-list">
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">PHP</span><span class="skill-value">70%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="PHP proficiency" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="70"></span></div>
+                            </div>
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">Node.js</span><span class="skill-value">76%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="Node.js proficiency" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="76"></span></div>
+                            </div>
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">Python</span><span class="skill-value">60%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="Python proficiency" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="60"></span></div>
+                            </div>
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">OOP TypeScript</span><span class="skill-value">65%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="Object-oriented TypeScript proficiency" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="65"></span></div>
+                            </div>
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">Laravel</span><span class="skill-value">70%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="Laravel proficiency" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="70"></span></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="skill-card" data-reveal>
+                        <div class="skill-card-head">
+                            <span class="skill-icon" aria-hidden="true"><i class="fa-solid fa-database"></i></span>
+                            <h3>Database</h3>
+                            <span class="skill-count">3 skills</span>
+                        </div>
+                        <div class="skill-list">
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">MySQL</span><span class="skill-value">80%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="MySQL proficiency" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="80"></span></div>
+                            </div>
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">MongoDB</span><span class="skill-value">75%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="MongoDB proficiency" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="75"></span></div>
+                            </div>
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">PostgreSQL</span><span class="skill-value">60%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="PostgreSQL proficiency" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="60"></span></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="skill-card" data-reveal>
+                        <div class="skill-card-head">
+                            <span class="skill-icon" aria-hidden="true"><i class="fa-solid fa-cloud-arrow-up"></i></span>
+                            <h3>Deployments</h3>
+                            <span class="skill-count">4 skills</span>
+                        </div>
+                        <div class="skill-list">
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">AWS</span><span class="skill-value">70%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="AWS proficiency" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="70"></span></div>
+                            </div>
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">Netlify</span><span class="skill-value">85%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="Netlify proficiency" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="85"></span></div>
+                            </div>
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">Vercel</span><span class="skill-value">80%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="Vercel proficiency" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="80"></span></div>
+                            </div>
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">Docker</span><span class="skill-value">50%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="Docker proficiency" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="50"></span></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="skill-card" data-reveal>
+                        <div class="skill-card-head">
+                            <span class="skill-icon" aria-hidden="true"><i class="fa-solid fa-tools"></i></span>
+                            <h3>Tools &amp; Design</h3>
+                            <span class="skill-count">6 skills</span>
+                        </div>
+                        <div class="skill-list">
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">GitHub</span><span class="skill-value">90%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="GitHub proficiency" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="90"></span></div>
+                            </div>
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">Jira</span><span class="skill-value">75%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="Jira proficiency" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="75"></span></div>
+                            </div>
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">Canva</span><span class="skill-value">80%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="Canva proficiency" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="80"></span></div>
+                            </div>
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">Draw.io</span><span class="skill-value">70%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="Draw.io proficiency" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="70"></span></div>
+                            </div>
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">Figma</span><span class="skill-value">85%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="Figma proficiency" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="85"></span></div>
+                            </div>
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">Postman</span><span class="skill-value">80%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="Postman proficiency" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="80"></span></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="skill-card" data-reveal>
+                        <div class="skill-card-head">
+                            <span class="skill-icon" aria-hidden="true"><i class="fa-solid fa-robot"></i></span>
+                            <h3>AI Tools</h3>
+                            <span class="skill-count">6 skills</span>
+                        </div>
+                        <div class="skill-list">
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">ChatGPT</span><span class="skill-value">85%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="ChatGPT proficiency" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="85"></span></div>
+                            </div>
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">GitHub Copilot</span><span class="skill-value">75%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="GitHub Copilot proficiency" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="75"></span></div>
+                            </div>
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">Claude</span><span class="skill-value">70%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="Claude proficiency" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="70"></span></div>
+                            </div>
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">Gemini</span><span class="skill-value">70%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="Gemini proficiency" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="70"></span></div>
+                            </div>
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">Codex</span><span class="skill-value">70%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="Codex proficiency" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="70"></span></div>
+                            </div>
+                            <div class="skill-row">
+                                <div class="skill-meta"><span class="skill-name">opencode-ai</span><span class="skill-value">70%</span></div>
+                                <div class="skill-bar" role="progressbar" aria-label="opencode-ai proficiency" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><span class="skill-bar-fill" data-percentage="70"></span></div>
+                            </div>
+                        </div>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects-showcase">
-        <div class="container">
-            <h2 class="section-title">MY PROJECTS</h2>
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">ALL</button>
-                <button class="filter-btn" data-filter="web">WEB</button>
-                <button class="filter-btn" data-filter="design">APP DESIGN</button>
+        <!-- Experience -->
+        <section id="experience" class="section experience" aria-labelledby="experience-title">
+            <div class="container">
+                <header class="section-head" data-reveal>
+                    <span class="eyebrow">Journey</span>
+                    <h2 class="section-title" id="experience-title">My <span class="gradient-text">Experience</span></h2>
+                    <p class="section-subtitle">The path that shaped how I learn, build, and design.</p>
+                </header>
 
-            </div>
+                <div class="timeline">
+                    <article class="timeline-item" data-reveal>
+                        <span class="timeline-marker" aria-hidden="true"></span>
+                        <div class="timeline-card">
+                            <div class="timeline-top">
+                                <h3>Web Developer</h3>
+                                <span class="timeline-date">2025 - Present</span>
+                            </div>
+                            <p>I&rsquo;m learning web development at PNC for 2 years. I can write code for both front-end and a little backend as well. I can design on Figma. It&rsquo;s not perfect, but I&rsquo;m improving.</p>
+                        </div>
+                    </article>
 
-            <div class="projects-grid-large">
-                <div class="project-item" data-category="web">
-                    <div class="project-image-wrapper">
-                        <div class="project-image-placeholder">
-                            <img src="/image/VC1.png" alt="">
+                    <article class="timeline-item" data-reveal>
+                        <span class="timeline-marker" aria-hidden="true"></span>
+                        <div class="timeline-card">
+                            <div class="timeline-top">
+                                <h3>Work at Phnom Penh for a Month</h3>
+                                <span class="timeline-date">2024</span>
+                            </div>
+                            <p>Moving to Phnom Penh was a new and exciting experience for me. It was my first time living in the city, and I traveled there independently. Fortunately, my older brother, who works in Phnom Penh, welcomed me upon my arrival.</p>
+                            <p>With the support and guidance of senior students who had previously stayed in the student dormitory, I secured a position at a Total gas station. I worked there for one month before resigning to focus on my studies as the school term was about to begin.</p>
                         </div>
-                        <div class="project-overlay">
-                            <a href="https://vc-1-trip-booking.vercel.app" class="project-link">View Project</a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Komrong Trip Booking App</h3>
-                        <p>Komrong is a web-based trip planning & booking application designed
-                            especially for students and groups of friends who want to organize trips
-                            easily.</p>
-                        <div class="project-tags">
-                            <span class="tag">Laravel</span>
-                            <span class="tag">React.js</span>
-                            <span class="tag">MySql</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-item" data-category="web">
-                    <div class="project-image-wrapper">
-                        <div class="project-image-placeholder">
-                            <img src="image/weather_app.png" alt="">
-                        </div>
-                        <div class="project-overlay">
-                            <a href="https://weather-web.magic-web.site" class="project-link">View Project</a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Weather App</h3>
-                        <p>The Weather App lets users view current weather and a 7-day forecast for their location or
-                            any city, including temperature, humidity, wind speed, and conditions.</p>
-                        <div class="project-tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-item" data-category="web">
-                    <div class="project-image-wrapper">
-                        <div class="project-image-placeholder">
-                            <img src="image/car-rantal-sytem.png" alt="">
-                        </div>
-                        <div class="project-overlay">
-                            <a href="http://vannacar.site/" class="project-link">View Project</a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Car Rental System</h3>
-                        <p>A fully functional car rental system with shopping cart, payment integration, and admin
-                            dashboard.</p>
-                        <div class="project-tags">
-                            <span class="tag">PYTHON</span>
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-                    </div>
-                </div>
+                    </article>
 
-                <div class="project-item" data-category="web">
-                    <div class="project-image-wrapper">
-                        <div class="project-image-placeholder">
-                            <img src="image/moto-cycle.png" alt="">
+                    <article class="timeline-item" data-reveal>
+                        <span class="timeline-marker" aria-hidden="true"></span>
+                        <div class="timeline-card">
+                            <div class="timeline-top">
+                                <h3>High School</h3>
+                                <span class="timeline-date">2021 - 2024</span>
+                            </div>
+                            <p>I studied in high school. I didn&rsquo;t study very well, but I managed to pass my exams. I stayed in a student dormitory from Monday to Saturday, and on Saturday evening I came back home to help my family with work. My house is far from the school&mdash;about 60 kilometers away. Usually, I ride a bicycle, and sometimes I take a motorbike for go to school.</p>
                         </div>
-                        <div class="project-overlay">
-                            <a href="https://websile-motorcycle.vercel.app/" class="project-link">View Project</a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Motorcycle Website</h3>
-                        <p>A responsive motorcycle website with drag-and-drop functionality and real-time
-                            updates.</p>
-                        <div class="project-tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">Sass</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-item" data-category="web">
-                    <div class="project-image-wrapper">
-                        <div class="project-image-placeholder">
-                            <img src="image/About-pnc.png" alt="">
-                        </div>
-                        <div class="project-overlay">
-                            <a href="https://create-about-page-pnc.vercel.app/" class="project-link">View Project</a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>PNC School</h3>
-                        <p>An interactive analytics dashboard with data visualization and real-time metrics tracking.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-item" data-category="design">
-                    <div class="project-image-wrapper">
-                        <div class="project-image-placeholder">
-                            <img src="image/figma.png" alt="">
-                        </div>
-                        <div class="project-overlay">
-                            <a href="https://www.figma.com/design/JLTCx0axdKRBhQ3LY6uAjF/Untitled?node-id=258-291&t=zn4P5Wdn0t96esPF-1"
-                                class="project-link">View Project</a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>APP Sell Pet</h3>
-                        <p>Complete branding package including logo, colors, and guidelines</p>
-                        <div class="project-tags">
-                            <span class="tag">Figma</span>
-                            <span class="tag">Design</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-item" data-category="design">
-                    <div class="project-image-wrapper">
-                        <div class="project-image-placeholder">
-                            <img src="image/figma(1).png" alt="">
-                        </div>
-                        <div class="project-overlay">
-                            <a href="https://www.figma.com/design/Xj110GGk8l7ybxHjhehxUa/Untitled?node-id=0-1&t=ok4CbE3sbpqyUqVo-1"
-                                class="project-link">View Project</a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Design about picture</h3>
-                        <p>This design is teacher gave me the picture to design following the picture</p>
-                        <div class="project-tags">
-                            <span class="tag">figma</span>
-                            <span class="tag">Design</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-item" data-category="design">
-                    <div class="project-image-wrapper">
-                        <div class="project-image-placeholder">
-                            <img src="image/figma(2).jpg" alt="">
-                        </div>
-                        <div class="project-overlay">
-                            <a href="https://www.figma.com/design/Xj110GGk8l7ybxHjhehxUa/Untitled?node-id=37-29&t=13nkM1cOL9ytgK27-1"
-                                class="project-link">View Project</a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Design food</h3>
-                        <p>This design is teacher gave me the picture to design following the picture</p>
-                        <div class="project-tags">
-                            <span class="tag">figma</span>
-                            <span class="tag">Design</span>
-                        </div>
-                    </div>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Activity Section -->
-    <section id="activity" class="activity">
-        <div class="container">
-            <div class="section-header">
-                <h1 class="page-title">MY ACTIVITY</h1>
-                <p class="page-subtitle">Additional experiences, workshops, and hands-on learning</p>
+        <!-- Projects -->
+        <section id="projects" class="section projects" aria-labelledby="projects-title">
+            <div class="container">
+                <header class="section-head" data-reveal>
+                    <span class="eyebrow">Portfolio</span>
+                    <h2 class="section-title" id="projects-title">My <span class="gradient-text">Projects</span></h2>
+                    <p class="section-subtitle">Web applications and app designs I have worked on.</p>
+                </header>
+
+                <div class="filter-bar" role="group" aria-label="Filter projects by category" data-reveal>
+                    <button class="filter-btn is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+                    <button class="filter-btn" type="button" data-filter="web" aria-pressed="false">Web</button>
+                    <button class="filter-btn" type="button" data-filter="design" aria-pressed="false">App Design</button>
+                </div>
+                <p class="filter-status" id="projectsStatus" role="status" aria-live="polite">Showing all 8 projects</p>
+
+                <div class="projects-grid" id="projectsGrid">
+                    <article class="project-card" data-category="web" data-reveal>
+                        <div class="project-media">
+                            <img src="image/vc1-trip-booking.jpg" alt="Screenshot of the Komrong Trip Booking App" width="1400" height="643" loading="lazy" decoding="async">
+                            <span class="project-badge">Web</span>
+                            <a class="project-media-link" href="https://vc-1-trip-booking.vercel.app" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Project
+                            </a>
+                        </div>
+                        <div class="project-body">
+                            <h3>Komrong Trip Booking App</h3>
+                            <p>Komrong is a web-based trip planning &amp; booking application designed especially for students and groups of friends who want to organize trips easily.</p>
+                            <div class="tags">
+                                <span class="tag">Laravel</span>
+                                <span class="tag">React.js</span>
+                                <span class="tag">MySQL</span>
+                            </div>
+                            <a class="project-link" href="https://vc-1-trip-booking.vercel.app" target="_blank" rel="noopener noreferrer">
+                                Live Demo <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-category="web" data-reveal>
+                        <div class="project-media">
+                            <img src="image/weather-app.jpg" alt="Screenshot of the Weather App" width="1400" height="667" loading="lazy" decoding="async">
+                            <span class="project-badge">Web</span>
+                            <a class="project-media-link" href="https://weather-web.magic-web.site" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Project
+                            </a>
+                        </div>
+                        <div class="project-body">
+                            <h3>Weather App</h3>
+                            <p>The Weather App lets users view current weather and a 7-day forecast for their location or any city, including temperature, humidity, wind speed, and conditions.</p>
+                            <div class="tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                            <a class="project-link" href="https://weather-web.magic-web.site" target="_blank" rel="noopener noreferrer">
+                                Live Demo <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-category="web" data-reveal>
+                        <div class="project-media">
+                            <img src="image/car-rental.jpg" alt="Screenshot of the Car Rental System" width="1400" height="672" loading="lazy" decoding="async">
+                            <span class="project-badge">Web</span>
+                            <a class="project-media-link" href="http://vannacar.site/" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Project
+                            </a>
+                        </div>
+                        <div class="project-body">
+                            <h3>Car Rental System</h3>
+                            <p>A fully functional car rental system with shopping cart, payment integration, and admin dashboard.</p>
+                            <div class="tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                            <a class="project-link" href="http://vannacar.site/" target="_blank" rel="noopener noreferrer">
+                                Live Demo <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-category="web" data-reveal>
+                        <div class="project-media">
+                            <img src="image/motorcycle.jpg" alt="Screenshot of the Motorcycle Website" width="1400" height="635" loading="lazy" decoding="async">
+                            <span class="project-badge">Web</span>
+                            <a class="project-media-link" href="https://websile-motorcycle.vercel.app/" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Project
+                            </a>
+                        </div>
+                        <div class="project-body">
+                            <h3>Motorcycle Website</h3>
+                            <p>A responsive motorcycle website with drag-and-drop functionality and real-time updates.</p>
+                            <div class="tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">Sass</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                            <a class="project-link" href="https://websile-motorcycle.vercel.app/" target="_blank" rel="noopener noreferrer">
+                                Live Demo <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-category="web" data-reveal>
+                        <div class="project-media">
+                            <img src="image/pnc-school.jpg" alt="Screenshot of the PNC School project" width="1400" height="674" loading="lazy" decoding="async">
+                            <span class="project-badge">Web</span>
+                            <a class="project-media-link" href="https://create-about-page-pnc.vercel.app/" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Project
+                            </a>
+                        </div>
+                        <div class="project-body">
+                            <h3>PNC School</h3>
+                            <p>An interactive analytics dashboard with data visualization and real-time metrics tracking.</p>
+                            <div class="tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                            </div>
+                            <a class="project-link" href="https://create-about-page-pnc.vercel.app/" target="_blank" rel="noopener noreferrer">
+                                Live Demo <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-category="design" data-reveal>
+                        <div class="project-media">
+                            <img src="image/pet-app.png" alt="Design preview of the App Sell Pet project" width="440" height="956" loading="lazy" decoding="async">
+                            <span class="project-badge">App Design</span>
+                            <a class="project-media-link" href="https://www.figma.com/design/JLTCx0axdKRBhQ3LY6uAjF/Untitled?node-id=258-291&amp;t=zn4P5Wdn0t96esPF-1" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Design
+                            </a>
+                        </div>
+                        <div class="project-body">
+                            <h3>APP Sell Pet</h3>
+                            <p>Complete branding package including logo, colors, and guidelines.</p>
+                            <div class="tags">
+                                <span class="tag">Figma</span>
+                                <span class="tag">Design</span>
+                            </div>
+                            <a class="project-link" href="https://www.figma.com/design/JLTCx0axdKRBhQ3LY6uAjF/Untitled?node-id=258-291&amp;t=zn4P5Wdn0t96esPF-1" target="_blank" rel="noopener noreferrer">
+                                View Design <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-category="design" data-reveal>
+                        <div class="project-media">
+                            <img src="image/design-about.png" alt="Design preview of the Design About Picture project" width="596" height="842" loading="lazy" decoding="async">
+                            <span class="project-badge">App Design</span>
+                            <a class="project-media-link" href="https://www.figma.com/design/Xj110GGk8l7ybxHjhehxUa/Untitled?node-id=0-1&amp;t=ok4CbE3sbpqyUqVo-1" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Design
+                            </a>
+                        </div>
+                        <div class="project-body">
+                            <h3>Design about picture</h3>
+                            <p>This design is teacher gave me the picture to design following the picture.</p>
+                            <div class="tags">
+                                <span class="tag">Figma</span>
+                                <span class="tag">Design</span>
+                            </div>
+                            <a class="project-link" href="https://www.figma.com/design/Xj110GGk8l7ybxHjhehxUa/Untitled?node-id=0-1&amp;t=ok4CbE3sbpqyUqVo-1" target="_blank" rel="noopener noreferrer">
+                                View Design <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-category="design" data-reveal>
+                        <div class="project-media">
+                            <img src="image/design-food.jpg" alt="Design preview of the Design Food project" width="900" height="900" loading="lazy" decoding="async">
+                            <span class="project-badge">App Design</span>
+                            <a class="project-media-link" href="https://www.figma.com/design/Xj110GGk8l7ybxHjhehxUa/Untitled?node-id=37-29&amp;t=13nkM1cOL9ytgK27-1" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View Design
+                            </a>
+                        </div>
+                        <div class="project-body">
+                            <h3>Design food</h3>
+                            <p>This design is teacher gave me the picture to design following the picture.</p>
+                            <div class="tags">
+                                <span class="tag">Figma</span>
+                                <span class="tag">Design</span>
+                            </div>
+                            <a class="project-link" href="https://www.figma.com/design/Xj110GGk8l7ybxHjhehxUa/Untitled?node-id=37-29&amp;t=13nkM1cOL9ytgK27-1" target="_blank" rel="noopener noreferrer">
+                                View Design <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+                </div>
             </div>
+        </section>
 
-            <h2 class="activity-subheading">Additional Experiences</h2>
+        <!-- Activity -->
+        <section id="activity" class="section activity" aria-labelledby="activity-title">
+            <div class="container">
+                <header class="section-head" data-reveal>
+                    <span class="eyebrow">Learning</span>
+                    <h2 class="section-title" id="activity-title">Activities &amp; <span class="gradient-text">Workshops</span></h2>
+                    <p class="section-subtitle">Additional experiences, workshops, and hands-on learning.</p>
+                </header>
 
-            <!-- Activity Timeline -->
-            <div class="activity-timeline">
-                <div class="timeline-item">
-                    <div class="timeline-icon">
-                        <i class="fas fa-clipboard-list"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Mar 9, 2026</div>
-                        <h3>Product Owner Workshop</h3>
-                        <p>Understood the Product Owner role and practiced key skills in requirements gathering and
-                            Jira through practical workshop activities.</p>
-                    </div>
-                </div>
+                <div class="activity-timeline">
+                    <article class="activity-item" data-reveal>
+                        <span class="activity-icon" aria-hidden="true"><i class="fa-solid fa-clipboard-list"></i></span>
+                        <div class="activity-card">
+                            <span class="activity-date">Mar 9, 2026</span>
+                            <h3>Product Owner Workshop</h3>
+                            <p>Understood the Product Owner role and practiced key skills in requirements gathering and Jira through practical workshop activities.</p>
+                        </div>
+                    </article>
 
-                <div class="timeline-item">
-                    <div class="timeline-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Feb 20, 2026</div>
-                        <h3>Full Stack Workshop</h3>
-                        <p>Learned to build a complete web application by combining frontend and backend technologies
-                            through a hands-on mini project, including UI design, server-side logic, and database
-                            integration.</p>
-                    </div>
-                </div>
+                    <article class="activity-item" data-reveal>
+                        <span class="activity-icon" aria-hidden="true"><i class="fa-solid fa-code"></i></span>
+                        <div class="activity-card">
+                            <span class="activity-date">Feb 20, 2026</span>
+                            <h3>Full Stack Workshop</h3>
+                            <p>Learned to build a complete web application by combining frontend and backend technologies through a hands-on mini project, including UI design, server-side logic, and database integration.</p>
+                        </div>
+                    </article>
 
-                <div class="timeline-item">
-                    <div class="timeline-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Jan 20, 2026</div>
-                        <h3>DevSecOps Engineer Workshop</h3>
-                        <p>Learned about the DevSecOps Engineer role, including database management concepts and how
-                            data insights support secure development and operations.</p>
-                    </div>
-                </div>
+                    <article class="activity-item" data-reveal>
+                        <span class="activity-icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></span>
+                        <div class="activity-card">
+                            <span class="activity-date">Jan 20, 2026</span>
+                            <h3>DevSecOps Engineer Workshop</h3>
+                            <p>Learned about the DevSecOps Engineer role, including database management concepts and how data insights support secure development and operations.</p>
+                        </div>
+                    </article>
 
-                <div class="timeline-item">
-                    <div class="timeline-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Jan 20, 2026</div>
-                        <h3>Database Workshop</h3>
-                        <p>Built knowledge of database tools and data visualization, including MySQL, PostgreSQL, and
-                            Power BI for turning data into useful insights.</p>
-                    </div>
-                </div>
+                    <article class="activity-item" data-reveal>
+                        <span class="activity-icon" aria-hidden="true"><i class="fa-solid fa-database"></i></span>
+                        <div class="activity-card">
+                            <span class="activity-date">Jan 20, 2026</span>
+                            <h3>Database Workshop</h3>
+                            <p>Built knowledge of database tools and data visualization, including MySQL, PostgreSQL, and Power BI for turning data into useful insights.</p>
+                        </div>
+                    </article>
 
-                <div class="timeline-item">
-                    <div class="timeline-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Jan 2, 2026</div>
-                        <h3>UX/UI Workshop</h3>
-                        <p>Translated project requirements into visual concepts and applied design logic through a
-                            hands-on mini project experience.</p>
-                    </div>
-                </div>
+                    <article class="activity-item" data-reveal>
+                        <span class="activity-icon" aria-hidden="true"><i class="fa-solid fa-palette"></i></span>
+                        <div class="activity-card">
+                            <span class="activity-date">Jan 2, 2026</span>
+                            <h3>UX/UI Workshop</h3>
+                            <p>Translated project requirements into visual concepts and applied design logic through a hands-on mini project experience.</p>
+                        </div>
+                    </article>
 
-                <div class="timeline-item">
-                    <div class="timeline-icon">
-                        <i class="fas fa-vial"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Jan 13, 2025</div>
-                        <h3>QA Workshop</h3>
-                        <p>Understood software quality assurance principles by translating project requirements into
-                            test cases and applying practical testing techniques through a hands-on mini project.</p>
-                    </div>
+                    <article class="activity-item" data-reveal>
+                        <span class="activity-icon" aria-hidden="true"><i class="fa-solid fa-flask"></i></span>
+                        <div class="activity-card">
+                            <span class="activity-date">Jan 13, 2025</span>
+                            <h3>QA Workshop</h3>
+                            <p>Understood software quality assurance principles by translating project requirements into test cases and applying practical testing techniques through a hands-on mini project.</p>
+                        </div>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2 class="section-title">GET IN TOUCH</h2>
+        <!-- Contact -->
+        <section id="contact" class="section contact" aria-labelledby="contact-title">
+            <div class="container">
+                <header class="section-head" data-reveal>
+                    <span class="eyebrow">Contact</span>
+                    <h2 class="section-title" id="contact-title">Let&rsquo;s <span class="gradient-text">Connect</span></h2>
+                    <p class="section-subtitle">Have a project, a role, or a question? Send me a message and I&rsquo;ll get back to you.</p>
+                </header>
 
-            <div class="contact-grid">
-                <!-- Contact Form -->
-                <div class="contact-form-wrapper">
-                    <h2>Send Me a Message</h2>
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" placeholder="John Doe" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5"
-                                placeholder="Can you give feedback that you feeling about my portfolio?"
-                                required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                        <div id="formMessage" class="form-message"></div>
-                    </form>
-                </div>
+                <div class="contact-grid">
+                    <div class="contact-panel" data-reveal>
+                        <h3>Send me a message</h3>
+                        <form class="contact-form" id="contactForm" data-contact-email="vanna.len@student.passerellesnumeriques.org" novalidate>
+                            <div class="form-grid">
+                                <div class="form-field">
+                                    <label for="name">Your name</label>
+                                    <input type="text" id="name" name="name" placeholder="John Doe" autocomplete="name" minlength="2" maxlength="100" required>
+                                </div>
+                                <div class="form-field">
+                                    <label for="email">Email address</label>
+                                    <input type="email" id="email" name="email" placeholder="john@example.com" autocomplete="email" inputmode="email" maxlength="160" required>
+                                </div>
+                                <div class="form-field form-field--full">
+                                    <label for="message">Message</label>
+                                    <textarea id="message" name="message" rows="5" placeholder="Tell me a little about your project or opportunity..." minlength="10" maxlength="5000" required></textarea>
+                                </div>
+                                <div class="hp-field" aria-hidden="true">
+                                    <label for="website">Website</label>
+                                    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                                </div>
+                            </div>
 
-                <!-- Contact Info -->
-                <div class="contact-info-wrapper">
-                    <h2>Contact Information</h2>
-                    <div class="contact-info-items">
-                        <div class="contact-info-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h3>Location</h3>
-                                <p>Phnom Penh, Cambodia</p>
-                            </div>
-                        </div>
-                        <div class="contact-info-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h3>Email</h3>
-                                <p>vanna.len@student.passerellesnumeriques.org</p>
-                            </div>
-                        </div>
-                        <div class="contact-info-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h3>Phone</h3>
-                                <p>097 205 5141</p>
-                            </div>
-                        </div>
-                        <div class="contact-info-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h3>Availability</h3>
-                                <p>Anytime</p>
-                            </div>
-                        </div>
+                            <button type="submit" class="btn btn-primary form-submit" id="submitBtn">
+                                <span class="spinner" aria-hidden="true"></span>
+                                <span class="btn-label">Send message</span>
+                                <i class="fa-regular fa-paper-plane btn-icon" aria-hidden="true"></i>
+                            </button>
+
+                            <p class="form-status" id="formStatus" role="status" aria-live="polite" aria-atomic="true"></p>
+                            <p class="form-note">Prefer email? <a href="mailto:vanna.len@student.passerellesnumeriques.org">vanna.len@student.passerellesnumeriques.org</a></p>
+                        </form>
                     </div>
 
-                    <!-- Social Links -->
-                    <div class="contact-social">
-                        <h3>Follow Me</h3>
-                        <div class="social-links-large">
-                            <a href="https://www.linkedin.com/in/vanna-len-6105373aa/" title="LinkedIn"><i
-                                    class="fab fa-linkedin"></i></a>
-                            <a href="https://github.com/len-vanna023" title="GitHub"><i class="fab fa-github"></i></a>
-                            <a href="https://www.facebook.com/share/1J24yPkEmg/" title="Facebook"><i
-                                    class="fab fa-facebook"></i></a>
-                            <a href="https://www.instagram.com/len_vanna_/" title="Instagram"><i
-                                    class="fab fa-instagram"></i></a>
+                    <aside class="contact-side" data-reveal aria-label="Contact information">
+                        <a class="contact-card contact-card--link" href="mailto:vanna.len@student.passerellesnumeriques.org">
+                            <span class="contact-icon" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
+                            <span class="contact-card-body">
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">vanna.len@student.passerellesnumeriques.org</span>
+                            </span>
+                        </a>
+
+                        <a class="contact-card contact-card--link" href="tel:+855972055141">
+                            <span class="contact-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
+                            <span class="contact-card-body">
+                                <span class="contact-label">Phone</span>
+                                <span class="contact-value">097&nbsp;205&nbsp;5141</span>
+                            </span>
+                        </a>
+
+                        <div class="contact-card">
+                            <span class="contact-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
+                            <span class="contact-card-body">
+                                <span class="contact-label">Location</span>
+                                <span class="contact-value">Phnom Penh, Cambodia</span>
+                            </span>
                         </div>
-                    </div>
+
+                        <div class="contact-card">
+                            <span class="contact-icon" aria-hidden="true"><i class="fa-solid fa-clock"></i></span>
+                            <span class="contact-card-body">
+                                <span class="contact-label">Availability</span>
+                                <span class="contact-value">Anytime</span>
+                            </span>
+                        </div>
+
+                        <div class="contact-social">
+                            <h3>Follow me</h3>
+                            <div class="social-links">
+                                <a href="https://www.linkedin.com/in/vanna-len-6105373aa/" target="_blank" rel="noopener noreferrer" aria-label="Vanna Len on LinkedIn" title="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+                                <a href="https://github.com/len-vanna023" target="_blank" rel="noopener noreferrer" aria-label="Vanna Len on GitHub" title="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                                <a href="https://www.facebook.com/share/1J24yPkEmg/" target="_blank" rel="noopener noreferrer" aria-label="Vanna Len on Facebook" title="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+                                <a href="https://www.instagram.com/len_vanna_/" target="_blank" rel="noopener noreferrer" aria-label="Vanna Len on Instagram" title="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </aside>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Vanna Len</h4>
-                    <p>Creative Developer & Designer</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/vanna-len-6105373aa/" title="LinkedIn"><i
-                                class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/len-vanna023" title="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="https://www.facebook.com/share/1J24yPkEmg/" title="Facebook"><i
-                                class="fab fa-facebook"></i></a>
-                    </div>
-                </div>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a class="brand" href="#home">
+                    <span class="brand-mark" aria-hidden="true">VL</span>
+                    <span class="brand-text">Vanna Len</span>
+                </a>
+                <p>Creative Developer &amp; Designer building modern, useful, and thoughtful digital experiences.</p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Vanna Len. All rights reserved.</p>
+
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <h3>Quick links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#activity">Activity</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="footer-connect">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/vanna-len-6105373aa/" target="_blank" rel="noopener noreferrer" aria-label="Vanna Len on LinkedIn" title="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+                    <a href="https://github.com/len-vanna023" target="_blank" rel="noopener noreferrer" aria-label="Vanna Len on GitHub" title="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/share/1J24yPkEmg/" target="_blank" rel="noopener noreferrer" aria-label="Vanna Len on Facebook" title="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/len_vanna_/" target="_blank" rel="noopener noreferrer" aria-label="Vanna Len on Instagram" title="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                </div>
+                <a class="footer-mail" href="mailto:vanna.len@student.passerellesnumeriques.org">vanna.len@student.passerellesnumeriques.org</a>
             </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <p>&copy; <span id="year">2026</span> Vanna Len. All rights reserved.</p>
+            <a href="#home" class="footer-top-link">Back to top <i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a>
         </div>
     </footer>
 
-    <script src="./js/script.js"></script>
-</body>
+    <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top" hidden>
+        <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+    </button>
 
+    <script src="js/projects.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/script.js"></script>
+</body>
 </html>

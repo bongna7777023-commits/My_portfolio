@@ -1,187 +1,132 @@
-# Vanna Len - Portfolio Website
+# Vanna Len — Portfolio
 
-A modern, responsive portfolio website showcasing creative development and design work. Built with HTML, CSS, and JavaScript.
+A dark-first, responsive portfolio for **Vanna Len**, a web developer and UI/UX designer based in Phnom Penh, Cambodia. Built with semantic HTML, modern CSS, and dependency-free JavaScript.
 
-## 🌟 Features
+## Highlights
 
-- **Responsive Design** - Fully responsive layout that works on all devices (mobile, tablet, desktop)
-- **Modern UI** - Clean and contemporary design with smooth animations
-- **Project Showcase** - Display of web development and design projects with filtering capabilities
-- **Skills Section** - Visual representation of technical skills with progress bars
-- **Experience Timeline** - Professional experience and education history
-- **Contact Form** - Functional contact form with validation
-- **Mobile Menu** - Hamburger menu for mobile navigation
-- **Smooth Animations** - Scroll animations and transitions for enhanced UX
+- Dark and light themes with saved preference and no flash on load
+- Responsive layout from 320px to wide desktop screens
+- Mobile navigation with keyboard support, backdrop, and Escape handling
+- Scroll-triggered reveals, animated counters, and skill bars
+- Project filtering with live status announcements
+- Accessible contact form with validation, loading state, and email fallback
+- Serverless contact endpoint that keeps the Telegram bot token on the server
+- Reduced-motion support and visible focus states throughout
+- Optimized image variants for faster loading
 
-## 📁 Project Structure
+## Project structure
 
+```text
+.
+├── index.html                  # Single-page portfolio
+├── style/
+│   ├── styles.css              # Design tokens, layout, components, themes
+│   ├── animations.css          # Keyframes, reveals, reduced-motion rules
+│   └── responsive.css          # Breakpoints and mobile navigation
+├── js/
+│   ├── script.js               # Theme, navigation, scroll state, contact form
+│   ├── projects.js             # Project filtering
+│   └── animations.js           # Reveal observer, counters, skill bars
+├── api/
+│   └── contact.js              # Vercel serverless contact handler
+├── image/                      # Profile, project, and optimized image assets
+├── download-CV/                # Downloadable CV
+├── .env.example                # Required environment variable names
+├── .gitignore
+└── readme.md
 ```
-portfolio about me/
-├── index.html          # Home page
-├── about.html          # About me page with skills and experience
-├── projects.html       # Projects showcase with filtering
-├── contact.html        # Contact form and information
-├── styles.css          # Main stylesheet
-├── script.js           # JavaScript functionality
-├── image/              # Image assets folder
-└── README.md           # This file
+
+## Run locally
+
+The site is static, but the contact endpoint requires a serverless runtime. To preview the page:
+
+```bash
+npx serve .
 ```
 
-## 📄 Pages
+Or:
 
-### Home (index.html)
-- Hero section with introduction
-- Featured projects preview
-- Call-to-action buttons
+```bash
+python -m http.server 8080
+```
 
-### About (about.html)
-- Personal introduction
-- Skills section with progress indicators
-- Experience timeline
-- Technical expertise display
+Then open `http://localhost:8080`.
 
-### Projects (projects.html)
-- Complete project portfolio
-- Filter by category (All, Web Design, App Design)
-- Project cards with descriptions and technologies used
-- Links to live projects and designs
+To run the page and the contact API together, use Vercel's local runtime:
 
-### Contact (contact.html)
-- Contact form with validation
-- Contact information
-- Social media links
-- Location, email, and availability details
+```bash
+npx vercel dev
+```
 
-## 🛠️ Technologies Used
+## Deploy
 
-- **HTML5** - Semantic markup
-- **CSS3** - Styling and animations
-- **JavaScript (Vanilla)** - Interactivity and form handling
-- **Font Awesome** - Icon library
-- **Remix Icon** - Additional icon set
+### Vercel (recommended)
 
-## 🚀 Features Breakdown
+Vercel supports the static site and `api/contact.js` in one project.
 
-### Navigation
-- Sticky navbar with smooth scrolling
-- Active link highlighting based on current page
-- Mobile hamburger menu with toggle functionality
-- Responsive navigation for all screen sizes
+1. Import the GitHub repository into Vercel.
+2. Add the environment variables `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` in **Project Settings → Environment Variables**.
+3. Deploy. The contact form posts to `/api/contact`.
 
-### Project Filtering
-- Filter projects by category
-- Smooth transitions between filtered views
-- Project cards with image overlays and links
+### GitHub Pages
 
-### Contact Form
-- Email validation
-- Required field validation
-- Success/error message display
-- Form reset after submission
+GitHub Pages can host the static site, but it cannot run `api/contact.js`. The form will show a friendly error with a direct **email me** link as a fallback. For a working form, deploy the API on Vercel or adapt `api/contact.js` to another serverless provider.
 
-### Animations
-- Scroll-triggered animations for elements
-- Skill progress bar animations
-- Smooth transitions and hover effects
-- Intersection Observer API for performance
+## Contact form setup
 
-## 📱 Responsive Breakpoints
+1. Create a Telegram bot with [BotFather](https://t.me/BotFather) and copy the token.
+2. Get the chat ID that should receive messages.
+3. Add both values to the hosting provider's environment settings. For local runs, export them in your shell or create a local `.env` file from `.env.example`; never commit it.
+4. Test with `npx vercel dev` and submit the form.
 
-The website is optimized for:
-- Mobile devices (320px and up)
-- Tablets (768px and up)
-- Desktops (1024px and up)
+The browser sends only `name`, `email`, `message`, and a honeypot field. The server validates input, rate-limits requests, and sends the message to Telegram. The token is never exposed to the client.
 
-## 🎨 Customization
+> **Security notice:** an older version of this project contained a Telegram bot token in client-side JavaScript. That token must be revoked in BotFather and replaced. Removing the file does not remove the secret from Git history, so rotation is required even if the old token is no longer used.
 
-### Colors & Styling
-Edit `styles.css` to customize:
-- Color scheme
-- Typography
-- Spacing and layout
-- Animation speeds
+## Customize
+
+### Colors and typography
+
+Edit the design tokens near the top of `style/styles.css`. Both themes use the same token names, so changing the palette in one place updates the whole site.
 
 ### Content
-Update HTML files to modify:
-- Personal information
-- Project details
-- Skills and experience
-- Contact information
+
+Update `index.html` for personal details, projects, skills, experience, and activity entries. The footer year is generated automatically.
 
 ### Images
-Replace images in the `image/` folder:
-- Profile pictures
-- Project screenshots
-- Design mockups
 
-## 📋 Projects Included
+Replace the optimized files in `image/` and keep the `width` and `height` attributes in `index.html` accurate to avoid layout shifts. The originals are retained in the same folder.
 
-1. **Car Rental System** - Full-stack rental system with Python, HTML, CSS, JavaScript
-2. **Motorcycle Website** - Responsive website with drag-and-drop functionality
-3. **PNC School** - Interactive about page for educational institution
-4. **APP Sell Pet** - Figma design for pet marketplace application
-5. **Design about picture** - Design project based on provided reference
-6. **Design food** - Food-related design project
+### CV
 
-## 🔧 JavaScript Functionality
+Replace `download-CV/Len vanna-Python Developer-CV.pdf` with an updated file and keep the same filename, or update the download links in `index.html`.
 
-### Mobile Menu Toggle
-- Hamburger menu for mobile devices
-- Auto-close on link click
-- Smooth transitions
+## Accessibility and performance
 
-### Active Navigation Link
-- Automatically highlights current page
-- Updates based on URL pathname
+- Semantic landmarks, skip link, and labelled form fields
+- `aria-expanded`, `aria-pressed`, `aria-current`, and live status regions
+- Visible focus styles and keyboard-operable navigation
+- `prefers-reduced-motion` respected by animations and scrolling
+- Lazy-loaded images below the fold with explicit dimensions
+- No JavaScript framework or build step
 
-### Project Filter
-- Filter projects by category
-- Smooth show/hide transitions
-- Active button highlighting
+## Testing checklist
 
-### Contact Form Validation
-- Email format validation
-- Required field checking
-- Success/error messaging
-- Auto-clear after submission
+```bash
+node --check js/script.js
+node --check js/projects.js
+node --check js/animations.js
+node --check api/contact.js
+```
 
-### Scroll Animations
-- Fade-in animations on scroll
-- Skill progress bar animations
-- Navbar shadow on scroll
+Then verify:
 
-## 📞 Contact Information
+- Navigation, theme toggle, project filters, and back-to-top button
+- Contact form validation and success/error states
+- Layout at 320px, 768px, 1024px, and wide desktop widths
+- Keyboard-only flow, including Escape to close the mobile menu
+- Reduced-motion mode and both color themes
 
-- **Location** - Cambodia
-- **Email** - your.email@example.com
-- **Phone** - +1 (234) 567-890
-- **Availability** - Mon - Fri, 9:00 AM - 6:00 PM
+## License
 
-## 🔗 Social Links
-
-- LinkedIn
-- GitHub
-- Twitter
-- Instagram
-
-## 📝 Notes
-
-- The contact form currently logs data to the browser console
-- To enable email functionality, integrate with a backend service (e.g., EmailJS, Formspree)
-- Update placeholder contact information with actual details
-- Add real social media profile links
-
-## 🚀 Getting Started
-
-1. Clone or download the repository
-2. Open `index.html` in a web browser
-3. No build process or dependencies required
-4. Customize content and images as needed
-
-## 📄 License
-
-© 2025 Vanna Len. All rights reserved.
-
-## 🎓 Learning Journey
-
-This portfolio represents my journey as a creative developer and designer, showcasing projects from my studies at PNC and personal development work. I'm continuously improving my skills in web development, UI/UX design, and full-stack development.
+© 2026 Vanna Len. All rights reserved.
